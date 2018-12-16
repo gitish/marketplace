@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Marketplace for Lloyds</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="marketPlace.css"></link>
+	<script>
+	$(function() {
+		$(".nav-link").click(function(e){
+			var page=$(this).attr("data-ref");
+			console.log(page);
+			$(".nav-link").each(function(index) {
+  				$(this).removeClass("active");
+  			});
+  			$(this).addClass("active");
+  			$.ajax({
+				url : '/getPage',
+				data : {
+					'pageId' : page,
+				},
+				success : function(result) {
+					$("#dvBody").html(result);
+				}
+			});
+
+		});
+		$("#firstButton").click();
+	});
+	</script>
+</head>
+<body>
+<div>
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+			<a id="firstButton" class="nav-link active"  data-ref="home" href="#">Home</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-ref="mp" href="#">Marketplace</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-ref="env" href="#">Environment</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-ref="wiki" href="#">Wiki</a>
+		</li>
+	</ul>
+</div>
+<div id="dvBody">
+</div>
+</body>
+</html>
