@@ -9,7 +9,7 @@
 		<java.version>1.8</java.version>
 		<docker.image.prefix>shl</docker.image.prefix>
 	</properties>
-	<groupId>com.lbg.ib.api</groupId>
+	<groupId>com.api</groupId>
 	<artifactId>marketplace</artifactId>
 	<version>0.1.0</version>
 
